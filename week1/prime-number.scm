@@ -5,5 +5,4 @@
     (cond ((> divisor square-root-of-n) #t)
           ((= (remainder n divisor) 0) #f)
           (else (prime-iter (+ divisor 1)))))
-
   (prime-iter 2))
