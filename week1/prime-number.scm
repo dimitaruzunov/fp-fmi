@@ -6,3 +6,10 @@
           ((= (remainder n divisor) 0) #f)
           (else (prime-iter (+ divisor 1)))))
   (if (= n 1) #f (prime-iter 2)))
+
+(define (primes-count-in-range a b)
+  (define (primes-count-in-range-iter a b count)
+    (cond ((> a b) count)
+          ((prime? a) (primes-count-in-range-iter (+ a 1) b (+ count 1)))
+          (else (primes-count-in-range-iter (+ a 1) b count))))
+  (primes-count-in-range-iter a b 0))
