@@ -1,0 +1,7 @@
+(define (divisors-sum n)
+  (define (divisors-sum-iter divisor sum)
+    (cond ((> divisor (/ n 2)) sum)
+          ((= (remainder n divisor) 0)
+           (divisors-sum-iter (+ divisor 1) (+ sum divisor)))
+          (else (divisors-sum-iter (+ divisor 1) sum))))
+  (divisors-sum-iter 1 n))
