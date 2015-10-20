@@ -3,9 +3,8 @@
   ;      ((= n 0) 1)
   ;      (else (* b (pow b (- n 1)))))
 
-  (define (even? n) (if (= (remainder n 2) 0) #t #f))
-
-  (define (square b) (* b b))
+  (define (square b)
+    (* b b))
 
   ; Quick pow
   ;(define (qpow b n)
