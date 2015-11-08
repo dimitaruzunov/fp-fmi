@@ -1,3 +1,4 @@
+; 4i^2 - 13in + 17n^2, i = 1, 2, ..., n
 (define (min-element n)
   (define (min-element-rec i)
     (if (= i n)

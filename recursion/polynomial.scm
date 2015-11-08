@@ -1,3 +1,4 @@
+; P(n, x) = nx^n + (n - 1)x^(n - 1) + ... + 2x^2 + x
 (define (p n x)
   (define (p-iter i currentX result)
     (if (> i n)
