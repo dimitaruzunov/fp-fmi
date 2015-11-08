@@ -26,6 +26,7 @@
 
   (accumulate + 0 term 1 next n))
 
+; finds the sum of all prime numbers in [a, b]
 (define (sum-primes a b)
   (define (prime-ends-on-3? n)
     (and (= (remainder n 10) 3)
@@ -37,6 +38,7 @@
 
   (filter-accumulate prime-ends-on-3? + 0 term a next b))
 
+; finds the sum of all fixed points of f in [a, b]
 (define (fixed-points-sum f a b)
   (define (fixed-point? x)
     (= (f x) x))
@@ -47,8 +49,31 @@
 
   (filter-accumulate fixed-point? + 0 id a 1+ b))
 
+; calculates e^x
 (define (e x N)
   (define (term a) (/ (expt x a) (factorial a)))
+
+  (define (next a) (+ a 1))
+
+  (accumulate + 0 term 0 next N))
+
+; calculates sin(x)
+(define (sinx x N)
+  (define (term a)
+    (* (expt -1 a)
+       (/ (expt x (+ (* 2 a) 1))
+          (factorial (+ (* 2 a) 1)))))
+
+  (define (next a) (+ a 1))
+
+  (accumulate + 0 term 0 next N))
+
+; calculates cos(x)
+(define (cosx x N)
+  (define (term a)
+    (* (expt -1 a)
+       (/ (expt x (* 2 a))
+          (factorial (* 2 a)))))
 
   (define (next a) (+ a 1))
 
