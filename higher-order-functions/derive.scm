@@ -1,0 +1,23 @@
+(define (derive f dx)
+  (lambda (x)
+    (/ (- (f (+ x dx))
+          (f x))
+       dx)))
+
+(define (derive-n n f dx)
+  (lambda (x)
+    (if (= n 1)
+      ((derive f dx) x)
+      ((derive (derive-n (- n 1) f dx) dx) x))))
+
+(define (derive-x f dx)
+  (lambda (x y)
+    (/ (- (f (+ x dx) y)
+          (f x y))
+       dx)))
+
+(define (derive-y f dy)
+  (lambda (x y)
+    (/ (- (f x (+ y dy))
+          (f x y))
+       dy)))
