@@ -1,0 +1,6 @@
+(define (higher-order f g h)
+  (lambda (x)
+    (let ((x%3 (remainder x 3)))
+      (cond ((= x%3 0) (* (f x) (g x)))
+            ((= x%3 1) (+ (f x) (g x) (h x)))
+            (else (- (f x) (h x)))))))
