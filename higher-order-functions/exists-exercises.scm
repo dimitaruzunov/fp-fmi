@@ -1,5 +1,5 @@
 (load "exists.scm")
-(load "../week1/factorial.scm")
+(load "accumulate.scm")
 
 ; finds if element of i^4 + 3in^2 + n^4, i = 1, 2, ..., n such that
 ; element divides x exists
@@ -28,7 +28,10 @@
   (define (in-range? t b)
     (and (>= t a) (<= t b)))
 
-  (define (term i) (/ (expt x i) (factorial i)))
+  (define (term i)
+    (define (term j) (/ x j))
+
+    (product term 1 1+ i))
 
   (define (1+ i) (+ i 1))
 
