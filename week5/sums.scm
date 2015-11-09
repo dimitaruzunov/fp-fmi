@@ -78,3 +78,20 @@
   (define (next a) (+ a 1))
 
   (accumulate + 0 term 0 next N))
+
+; finds the sum of all integers x in [start, end] such that f(x) = value
+(define (sum4 start end f value)
+  (define (next i) (+ i 1))
+
+  (define (term i) i)
+
+  ; accumulate version
+  ;(define (combiner result t)
+  ;  (if (= (f t) value)
+  ;      (+ result t)
+  ;      result))
+  ;(accumulate combiner 0 term start next end)
+
+  (define (pred? t) (= (f t) value))
+
+  (filter-accumulate pred? + 0 term start next end))
