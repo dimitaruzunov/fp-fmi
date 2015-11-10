@@ -66,14 +66,11 @@
   (define (derive-n f n)
     ((repeat derive n) f))
 
-  (define (compose-n f n)
-    ((repeat compose n) f (lambda (x) x)))
-
   (lambda (x)
     (define (1+ k) (+ 1 k))
 
     (define (term k)
-      (define (term p) ((compose-n g p) x))
+      (define (term p) ((repeat g p) x))
 
       ((derive-n f k) (accumulate * 1 term 1 1+ m)))
 
