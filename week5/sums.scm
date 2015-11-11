@@ -95,3 +95,20 @@
   (define (pred? t) (= (f t) value))
 
   (filter-accumulate pred? + 0 term start next end))
+
+; find divisors count with accumulate and filter-accumulate
+(define (divisors-count n a b)
+  ;(define (combiner acc current)
+  ;  (if (zero? (remainder n current))
+  ;      (+ acc 1)
+  ;      acc))
+  ;
+  ;(accumulate combiner 0 (lambda (x) x) a (lambda (x) (+ x 1)) b)
+
+  (define (divides-n? current)
+    (zero? (remainder n current)))
+
+  (define (combiner acc _) (+ acc 1))
+
+  (filter-accumulate divides-n? combiner 0 (lambda (x) x)
+                     a (lambda (x) (+ x 1)) b))
